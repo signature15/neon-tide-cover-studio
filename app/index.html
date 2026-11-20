@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090a0d">
+    <title>Neon Tide | Cover lab</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="./" aria-label="Neon Tide cover lab">
+          <span class="wordmark-mark" aria-hidden="true"><span></span><span></span></span>
+          <span>Neon Tide</span>
+        </a>
+        <div class="topbar-meta">
+          <span class="local-status"><span class="status-dot" aria-hidden="true"></span>Local only</span>
+          <span class="frame-count">6 frames / 1 photo</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="stage-panel" aria-labelledby="stage-title">
+          <div class="stage-heading">
+            <div>
+              <p class="section-kicker">Cover lab</p>
+              <h1 id="stage-title">Cut the night into frames.</h1>
+            </div>
+            <p class="stage-help">Select a frame, drag to pan, scroll to zoom.</p>
+          </div>
+
+          <div class="canvas-area">
+            <div class="canvas-frame">
+              <canvas id="coverCanvas" width="1080" height="1350" aria-label="Neon Tide cover preview"></canvas>
+              <div class="canvas-marker marker-top" aria-hidden="true"></div>
+              <div class="canvas-marker marker-bottom" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="stage-footer">
+            <span id="selectedFrameLabel">Frame 01 / Hero</span>
+            <span id="canvasHint">Drag inside a frame to recompose it.</span>
+          </div>
+        </section>
+
+        <aside class="inspector" aria-label="Cover controls">
+          <section class="control-section upload-section">
+            <div class="section-heading">
+              <h2>Source photo</h2>
+              <span class="control-index">01</span>
+            </div>
+            <label class="upload-control" for="photoInput">
+              <span class="upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" /></svg>
+              </span>
+              <span>
+                <strong>Load a photo</strong>
+                <small>JPG, PNG, or WebP. It stays on this device.</small>
+              </span>
+              <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif">
+            </label>
+            <p class="control-note" id="photoName">Sample pier photo loaded</p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading">
+              <h2>Panel cuts</h2>
+              <span class="control-index">02</span>
+            </div>
+            <div class="panel-grid" id="panelGrid" aria-label="Six cover panels">
+              <button class="panel-button is-selected" type="button" data-panel="0" aria-label="Select frame 1, Hero" aria-pressed="true">
+                <canvas width="120" height="150"></canvas><span>01</span>
+              </button>
+              <button class="panel-button" type="button" data-panel="1" aria-label="Select frame 2" aria-pressed="false">
+                <canvas width="120" height="150"></canvas><span>02</span>
+              </button>
+              <button class="panel-button" type="button" data-panel="2" aria-label="Select frame 3" aria-pressed="false">
+                <canvas width="120" height="150"></canvas><span>03</span>
+              </button>
+              <button class="panel-button" type="button" data-panel="3" aria-label="Select frame 4" aria-pressed="false">
+                <canvas width="120" height="150"></canvas><span>04</span>
+              </button>
+              <button class="panel-button" type="button" data-panel="4" aria-label="Select frame 5" aria-pressed="false">
+                <canvas width="120" height="150"></canvas><span>05</span>
+              </button>
+              <button class="panel-button" type="button" data-panel="5" aria-label="Select frame 6" aria-pressed="false">
+                <canvas width="120" height="150"></canvas><span>06</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading">
+              <h2>Billboard line</h2>
+              <span class="control-index">03</span>
+            </div>
+            <label class="field-label" for="captionInput">Cover caption</label>
+            <input id="captionInput" class="text-input" type="text" maxlength="42" value="Midnight on Ocean Drive" autocomplete="off">
+            <p class="control-note">The title sits in the black footer strip.</p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading">
+              <h2>Color grade</h2>
+              <span class="control-index">04</span>
+            </div>
+            <div class="grade-grid" role="group" aria-label="Choose a color grade">
+              <button class="grade-button is-selected" type="button" data-grade="tide" aria-pressed="true">
+                <span class="grade-swatch swatch-tide" aria-hidden="true"></span><span><strong>Tide blue</strong><small>Cyan / magenta</small></span>
+              </button>
+              <button class="grade-button" type="button" data-grade="night" aria-pressed="false">
+                <span class="grade-swatch swatch-night" aria-hidden="true"></span><span><strong>Night flash</strong><small>Cool silver</small></span>
+              </button>
+              <button class="grade-button" type="button" data-grade="salt" aria-pressed="false">
+                <span class="grade-swatch swatch-salt" aria-hidden="true"></span><span><strong>Salt print</strong><small>Soft monochrome</small></span>
+              </button>
+              <button class="grade-button" type="button" data-grade="heat" aria-pressed="false">
+                <span class="grade-swatch swatch-heat" aria-hidden="true"></span><span><strong>Heatwave</strong><small>Pink / amber</small></span>
+              </button>
+            </div>
+          </section>
+
+          <section class="control-section export-section">
+            <div class="section-heading">
+              <h2>Export</h2>
+              <span class="control-index">05</span>
+            </div>
+            <div class="export-controls">
+              <label class="field-label" for="exportSize">Width</label>
+              <select id="exportSize" class="size-select">
+                <option value="1080">1080 px</option>
+                <option value="2160">2160 px</option>
+                <option value="3240">3240 px</option>
+              </select>
+              <button id="exportButton" class="export-button" type="button">
+                Export cover
+                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 4v12m0 0 4.5-4.5M12 16l-4.5-4.5M5 19.5h14" /></svg>
+              </button>
+            </div>
+            <p class="export-status" id="exportStatus" role="status" aria-live="polite">PNG export is ready when you are.</p>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <span>Neon Tide cover lab</span>
+        <span>Photos never leave this browser</span>
+      </footer>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
